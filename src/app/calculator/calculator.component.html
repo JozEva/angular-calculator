@@ -1,0 +1,67 @@
+<div class="calculator">
+  <div class="calculator-screen">
+    <div>{{ input }}</div>
+  </div>
+  <div>
+    <div>
+      <app-button (click)="allClear()" styling="all-clear">AC</app-button>
+      <app-button (click)="clear()" styling="clear">C</app-button>
+      <app-button (click)="selectOperator('/')" styling="operand">/</app-button>
+    </div>
+    <div>
+      <div>
+        <div>
+          <app-button (click)="selectNumber('7')" styling="number"
+            >7</app-button
+          >
+          <app-button (click)="selectNumber('8')" styling="number"
+            >8</app-button
+          >
+          <app-button (click)="selectNumber('9')" styling="number"
+            >9</app-button
+          >
+          <app-button (click)="selectOperator('*')" styling="operand"
+            >*</app-button
+          >
+        </div>
+        <div>
+          <app-button (click)="selectNumber('4')" styling="number"
+            >4</app-button
+          >
+          <app-button (click)="selectNumber('5')" styling="number"
+            >5</app-button
+          >
+          <app-button (click)="selectNumber('6')" styling="number"
+            >6</app-button
+          >
+          <app-button (click)="selectOperator('-')" styling="operand"
+            >-</app-button
+          >
+        </div>
+        <div>
+          <app-button (click)="selectNumber('1')" styling="number"
+            >1</app-button
+          >
+          <app-button (click)="selectNumber('2')" styling="number"
+            >2</app-button
+          >
+          <app-button (click)="selectNumber('3')" styling="number"
+            >3</app-button
+          >
+          <app-button (click)="selectOperator('+')" styling="operand"
+            >+</app-button
+          >
+        </div>
+        <div>
+          <app-button (click)="selectNumber('.')" styling="operand"
+            >.</app-button
+          >
+          <app-button (click)="selectNumber('0')" styling="number"
+            >0</app-button
+          >
+          <app-button (click)="printResult()" styling="equals">=</app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
