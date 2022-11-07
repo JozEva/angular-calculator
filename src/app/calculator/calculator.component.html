@@ -1,12 +1,14 @@
 <div class="calculator">
   <div class="calculator-screen">
-    <div>{{ input }}</div>
-    <div>{{ result }}</div>
+    <div class="calculator-screen-result">
+      <div>{{ input }}</div>
+      <div>{{ result }}</div>
+    </div>
   </div>
   <div>
     <div class="grid-first-row">
-      <app-button (click)="allClear()" styling="all-clear">AC</app-button>
-      <app-button (click)="clear()" styling="clear">C</app-button>
+      <app-button (click)="allClear()">AC</app-button>
+      <app-button (click)="clear()">C</app-button>
       <app-button (click)="selectOperator('/')" styling="operator"
         >/</app-button
       >
@@ -62,9 +64,7 @@
           <app-button (click)="selectNumber('0')" styling="number"
             >0</app-button
           >
-          <app-button class="grid-equals" (click)="calculate()" styling="equals"
-            >=</app-button
-          >
+          <app-button (click)="calculate()" styling="equals">=</app-button>
         </div>
       </div>
     </div>
