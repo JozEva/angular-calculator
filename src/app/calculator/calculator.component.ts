@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
 })
 export class CalculatorComponent {
   input: string = '';
-  result: string = '';
+  result: string;
 
   selectNumber(number: string) {
-    if (number == '.') {
-      if (this.input != '') {
-        const lastNumber = this.getLastOperand();
-        if (lastNumber.lastIndexOf('.') >= 0) return;
+    if (number === '.') {
+      if (this.input !== '') {
+        const lastOperand = this.getLastOperand();
+        if (lastOperand.lastIndexOf('.') >= 0) return;
       }
     }
 
@@ -21,20 +21,24 @@ export class CalculatorComponent {
       if (this.input == '') {
         return;
       }
-
-      const lastKey = this.input[this.input.length - 1];
-      if (
-        lastKey === '/' ||
-        lastKey === '*' ||
-        lastKey === '-' ||
-        lastKey === '+'
-      ) {
-        return;
-      }
     }
-
+    this.result = '';
     this.input = this.input + number;
-    this.calculateOperation();
+  }
+
+  selectOperator(operator: string) {
+    if (this.input === '') return;
+
+    const lastKey = this.input[this.input.length - 1];
+    if (
+      lastKey === '/' ||
+      lastKey === '*' ||
+      lastKey === '-' ||
+      lastKey === '+'
+    ) {
+      return;
+    }
+    return (this.input = this.input + operator);
   }
 
   getLastOperand() {
@@ -49,59 +53,21 @@ export class CalculatorComponent {
     return this.input.substring(position + 1);
   }
 
-  selectOperator(operator: string) {
-    const lastKey = this.input[this.input.length - 1];
-    if (
-      lastKey === '/' ||
-      lastKey === '*' ||
-      lastKey === '-' ||
-      lastKey === '+'
-    ) {
-      return;
-    }
-
-    this.input = this.input + operator;
-    this.calculateOperation();
-  }
-
-  clear() {
-    if (this.input != '') {
-      this.input = this.input.substr(0, this.input.length - 1);
-    }
-  }
-
-  allClear() {
-    this.result = '';
+  allClear(): void {
     this.input = '';
+    this.result = '';
   }
 
-  calculateOperation() {
-    let operation = this.input;
-
-    let lastKey = operation[operation.length - 1];
-
-    if (lastKey === '.') {
-      operation = operation.substring(0, operation.length - 1);
+  clear(): void {
+    if (this.input !== '') {
+      this.input = this.input.slice(0, this.input.length - 1);
     }
-
-    lastKey = operation[operation.length - 1];
-
-    if (
-      lastKey === '/' ||
-      lastKey === '*' ||
-      lastKey === '-' ||
-      lastKey === '+' ||
-      lastKey === '.'
-    ) {
-      operation = operation.substring(0, operation.length - 1);
-    }
-
-    this.result = eval(operation);
   }
 
-  printResult() {
-    this.calculateOperation();
-    this.input = this.result;
-    if (this.input == '0') this.input = '';
+  calculate(): void {
+    if (this.input === '') return;
+    this.input = eval(this.input);
+    this.result = this.input;
+    this.input = '';
   }
 }

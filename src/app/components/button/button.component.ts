@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -8,6 +8,18 @@ import { Component, HostBinding, Input } from '@angular/core';
 export class ButtonComponent {
   @Input() disabled = false;
   @Input() type = 'button';
+  @Input() set styling(value: string | '') {
+    this.classList = {
+      ...this.classList,
+      ...{
+        'app-button-number': value === 'number',
+        'app-button-operator': value === 'operator',
+        'app-button-equals': value === 'equals',
+      },
+    };
+  }
+
+  classList: Record<string, boolean> = {};
 
   constructor() {}
 }

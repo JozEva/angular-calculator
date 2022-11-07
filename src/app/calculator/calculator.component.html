@@ -1,16 +1,19 @@
 <div class="calculator">
   <div class="calculator-screen">
     <div>{{ input }}</div>
+    <div>{{ result }}</div>
   </div>
   <div>
-    <div>
+    <div class="grid-first-row">
       <app-button (click)="allClear()" styling="all-clear">AC</app-button>
       <app-button (click)="clear()" styling="clear">C</app-button>
-      <app-button (click)="selectOperator('/')" styling="operand">/</app-button>
+      <app-button (click)="selectOperator('/')" styling="operator"
+        >/</app-button
+      >
     </div>
     <div>
       <div>
-        <div>
+        <div class="grid-second-row">
           <app-button (click)="selectNumber('7')" styling="number"
             >7</app-button
           >
@@ -20,11 +23,11 @@
           <app-button (click)="selectNumber('9')" styling="number"
             >9</app-button
           >
-          <app-button (click)="selectOperator('*')" styling="operand"
+          <app-button (click)="selectOperator('*')" styling="operator"
             >*</app-button
           >
         </div>
-        <div>
+        <div class="grid-third-row">
           <app-button (click)="selectNumber('4')" styling="number"
             >4</app-button
           >
@@ -34,11 +37,11 @@
           <app-button (click)="selectNumber('6')" styling="number"
             >6</app-button
           >
-          <app-button (click)="selectOperator('-')" styling="operand"
+          <app-button (click)="selectOperator('-')" styling="operator"
             >-</app-button
           >
         </div>
-        <div>
+        <div class="grid-fourth-row">
           <app-button (click)="selectNumber('1')" styling="number"
             >1</app-button
           >
@@ -48,18 +51,20 @@
           <app-button (click)="selectNumber('3')" styling="number"
             >3</app-button
           >
-          <app-button (click)="selectOperator('+')" styling="operand"
+          <app-button (click)="selectOperator('+')" styling="operator"
             >+</app-button
           >
         </div>
-        <div>
-          <app-button (click)="selectNumber('.')" styling="operand"
+        <div class="grid-last-row">
+          <app-button (click)="selectNumber('.')" styling="operator"
             >.</app-button
           >
           <app-button (click)="selectNumber('0')" styling="number"
             >0</app-button
           >
-          <app-button (click)="printResult()" styling="equals">=</app-button>
+          <app-button class="grid-equals" (click)="calculate()" styling="equals"
+            >=</app-button
+          >
         </div>
       </div>
     </div>
