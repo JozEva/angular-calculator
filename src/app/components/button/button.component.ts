@@ -20,6 +20,4 @@ export class ButtonComponent {
   }
 
   classList: Record<string, boolean> = {};
-
-  constructor() {}
 }
